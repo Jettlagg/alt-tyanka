@@ -1,0 +1,10 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.DS_Store
+.env*
+classified-laura-image.tar.gz
+deploy/nginx/active.conf*
+certbot-renew.log

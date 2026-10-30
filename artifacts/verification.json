@@ -1,0 +1,63 @@
+{
+  "productionBuild": "passed",
+  "e2eTests": 18,
+  "browsers": [
+    "Chromium",
+    "WebKit"
+  ],
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    1440
+  ],
+  "productionTouchWebKit": "passed",
+  "naturalAnimations": "passed",
+  "soundToggle": "passed",
+  "consoleErrors": [],
+  "externalRequests": [],
+  "originalArtSHA256": "1cf217b96435fa85aa1816ea41b0ffd61826ec8f8731636a01872a053ba18dd8",
+  "finalMessage": [
+    "Ты правда очень красивая ♡",
+    "Научись любить себя. Идеальных людей не бывает.",
+    "И помни, что красота — в глазах смотрящего."
+  ],
+  "docker": {
+    "image": "classified-laura:latest",
+    "imageDigest": "sha256:48339b97764ee9f5aae021bd9ad7a4e094ae9426321b01f2c4f846f188b4f42f",
+    "platforms": [
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "healthchecks": "both healthy",
+    "httpChecks": "both 200 OK",
+    "nginxConfigChecks": "both passed",
+    "browserTests": {
+      "initialPassed": 17,
+      "passedAfterFixingImageLoadWait": 1
+    },
+    "archive": "classified-laura-image.tar.gz",
+    "archiveBytes": 56735439,
+    "archiveSHA256": "7297ad4e7b96006a9e3b1944d8af3398bc3c37b1c7ee5fd6e539944c1be6b460",
+    "archiveIntegrity": "both platform manifests and all layers present"
+  },
+  "domainDeployment": {
+    "domain": "alt-tyanka.ru",
+    "productionCompose": "validated",
+    "scriptSyntax": "passed",
+    "nginxHTTPConfig": "passed",
+    "nginxHTTPSConfig": "passed",
+    "httpBootstrap": "200 OK",
+    "httpRedirect": "301 to https://alt-tyanka.ru with request URI preserved",
+    "acmePathHTTP": "200 OK before and after HTTPS enabled",
+    "https": "HTTP/2 200 OK with locally generated and explicitly trusted test certificate",
+    "browserCheck": "app, JS/CSS/fonts, portrait, local progress, mobile layout, no console errors",
+    "healthchecks": "application and nginx healthy",
+    "certbotVersion": "5.9.0",
+    "publicDNSObserved": "NXDOMAIN",
+    "publicDeployment": "not performed: no VPS access and DNS does not yet resolve",
+    "realCertificateIssued": false,
+    "renewalScheduleInstalled": false
+  }
+}

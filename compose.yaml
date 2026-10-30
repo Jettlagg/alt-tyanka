@@ -1,0 +1,10 @@
+name: classified-laura
+
+services:
+  laura:
+    image: classified-laura:latest
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    restart: unless-stopped

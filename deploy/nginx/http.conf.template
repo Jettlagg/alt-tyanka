@@ -1,0 +1,17 @@
+# Bootstrap configuration: no certificate is needed to start HTTP.
+server {
+    listen 80;
+    listen [::]:80;
+    server_name alt-tyanka.ru;
+    server_tokens off;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        default_type text/plain;
+        try_files $uri =404;
+    }
+
+    location / {
+        include /etc/nginx/conf.d/proxy.inc;
+    }
+}
