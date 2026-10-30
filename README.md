@@ -85,10 +85,10 @@ gzip -dc classified-laura-image.tar.gz | docker load
 После настройки A-записи домена на IP сервера запустите на сервере:
 
 ```sh
-bash scripts/init-https.sh you@example.com
+bash scripts/init-https.sh
 ```
 
-Замените email на свой. Скрипт включает `https://alt-tyanka.ru`; автоматическое продление настраивается через cron по инструкции. Публичное размещение не выполняется локальным `Запустить.command`.
+Email необязателен. Чтобы указать его, передайте аргумент: `bash scripts/init-https.sh you@example.com`. Скрипт включает `https://alt-tyanka.ru`; автоматическое продление настраивается через cron по инструкции. Публичное размещение не выполняется локальным `Запустить.command`.
 
 ## Публикация на Vercel
 

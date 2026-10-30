@@ -5,8 +5,8 @@ PROJECT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 compose() { docker compose -f "$PROJECT_DIR/compose.production.yaml" "$@"; }
 CONFIG_DIR="$PROJECT_DIR/deploy/nginx"
 
-if [[ $# -ne 1 || -z "$1" ]]; then
-    printf 'Использование: %s EMAIL_ДЛЯ_LETS_ENCRYPT\n' "$0" >&2
+if [[ $# -gt 1 ]]; then
+    printf 'Использование: %s [EMAIL_ДЛЯ_LETS_ENCRYPT]\n' "$0" >&2
     exit 1
 fi
 
@@ -42,7 +42,7 @@ printf '\nВыпускаем сертификат для alt-tyanka.ru. DNS до
 compose run --rm --no-deps certbot certonly \
     --webroot --webroot-path /var/www/certbot \
     --cert-name alt-tyanka.ru --domain alt-tyanka.ru \
-    --email "$1" --agree-tos --non-interactive --keep-until-expiring
+    --email "${1:-}" --agree-tos --non-interactive --keep-until-expiring
 
 cp "$CONFIG_DIR/active.conf" "$CONFIG_DIR/active.conf.previous"
 cp "$CONFIG_DIR/https.conf.template" "$CONFIG_DIR/active.conf.tmp"
