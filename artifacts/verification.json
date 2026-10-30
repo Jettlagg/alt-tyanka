@@ -55,9 +55,10 @@
     "browserCheck": "app, JS/CSS/fonts, portrait, local progress, mobile layout, no console errors",
     "healthchecks": "application and nginx healthy",
     "certbotVersion": "5.9.0",
-    "publicDNSObserved": "NXDOMAIN",
-    "publicDeployment": "not performed: no VPS access and DNS does not yet resolve",
+    "publicDNSObserved": "5.63.152.94",
+    "publicDeployment": "VPS ports published; user confirmed active.conf absent; remote correction commands provided",
     "realCertificateIssued": false,
-    "renewalScheduleInstalled": false
+    "renewalScheduleInstalled": false,
+    "missingActiveConfigRegression": "reproduced; fixed startup guard and healthcheck verified; valid config serves HTTP 200"
   }
 }

@@ -71,6 +71,19 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 ## Проверка и обновление
 
+Если контейнер Nginx запущен, но подключения к 80/443 не работают, проверьте наличие `deploy/nginx/active.conf`. Файлы `*.conf.template` сами не загружаются: рабочий конфиг создаёт `bash scripts/init-https.sh`. Запуск одного `docker compose up` до этой инициализации недостаточен. Production Compose проверяет наличие рабочего конфига при старте и в healthcheck.
+
+Если внешний Nginx уже запущен без конфига и нужно сначала проверить HTTP, выполните из каталога проекта:
+
+```sh
+cp deploy/nginx/http.conf.template deploy/nginx/active.conf
+docker compose -f compose.production.yaml exec -T nginx nginx -t
+docker compose -f compose.production.yaml exec -T nginx nginx -s reload
+curl -I -H 'Host: alt-tyanka.ru' http://127.0.0.1
+```
+
+Эти команды предназначены для случая, когда `active.conf` отсутствует. Для включения HTTPS затем запустите `bash scripts/init-https.sh`. Если контейнер уже остановлен из-за отсутствия конфига, сразу используйте скрипт инициализации.
+
 ```sh
 docker compose -f compose.production.yaml ps
 docker compose -f compose.production.yaml exec -T nginx nginx -t
